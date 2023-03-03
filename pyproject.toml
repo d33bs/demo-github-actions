@@ -5,7 +5,7 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 license = "Apache 2.0"
 readme = "README.md"
-packages = [{include = "demo_github_actions"}]
+packages = [{include = "python_app"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
