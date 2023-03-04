@@ -1,0 +1,23 @@
+name: run-pytest-ghactions
+on: [push]
+jobs:
+  run-pytest-ghactions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10","3.11"]
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.4
+      - name: Install dependencies
+        run: poetry install
+      - name: Run pytest from Poetry
+        run: poetry run python -m pytest
