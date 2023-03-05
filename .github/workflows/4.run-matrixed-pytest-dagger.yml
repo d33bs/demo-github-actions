@@ -3,6 +3,9 @@ on: [push]
 jobs:
   run-pytest-dagger:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10","3.11"]
     steps:
       - name: Checkout repo content
         uses: actions/checkout@v3
@@ -14,5 +17,7 @@ jobs:
         uses: abatilo/actions-poetry@v2
         with:
           poetry-version: 1.4
+      - name: Install dependencies
+        run: poetry install
       - name: Run Dagger using Python SDK
-        run: poetry run python dagger/run_tests.py
+        run: poetry run python dagger/run_tests.py ${{ matrix.python-version }}

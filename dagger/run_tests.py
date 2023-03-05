@@ -9,8 +9,7 @@ import anyio
 import dagger
 
 
-async def test():
-    versions = ["3.10", "3.11"]
+async def test(versions):
 
     async with dagger.Connection(dagger.Config(log_output=sys.stderr)) as client:
         # get reference to the local project
@@ -47,4 +46,10 @@ async def test():
 
 
 if __name__ == "__main__":
-    anyio.run(test)
+    if len(sys.argv) > 1:
+        py_versions = sys.argv[1:]
+    else:
+        py_versions = ["3.10", "3.11"]
+
+    anyio.run(test, py_versions)
+
