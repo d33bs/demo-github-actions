@@ -1,7 +1,7 @@
-name: run-pytest-dagger
+name: run-matrixed-pytest-dagger
 on: [push]
 jobs:
-  run-pytest-dagger:
+  run-matrixed-pytest-dagger:
     runs-on: ubuntu-latest
     strategy:
       matrix:

@@ -1,7 +1,7 @@
-name: run-pytest-ghactions
+name: run-matrixed-pytest-ghactions
 on: [push]
 jobs:
-  run-pytest-ghactions:
+  run-matrixed-pytest-ghactions:
     runs-on: ubuntu-latest
     strategy:
       matrix:
